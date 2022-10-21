@@ -1,0 +1,28 @@
+# 设置启动的环境
+spring:
+  profiles:
+    active: pro
+---
+# 线上环境
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://49.235.114.165:3306/db_user?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root@qing#429
+  application:
+    name: userservice # eureka的client名称
+  config:
+    activate:
+      on-profile: pro
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.105:8848 # nacos服务地址
+server:
+  port: 8081
+
+
+logging:
+  level:
+    com.example.userservice: debug
